@@ -9,10 +9,16 @@ import SwiftUI
 
 struct SearchView: View {
     var body: some View {
-        Text("SearchView")
+        NavigationStack{
+            ScrollView {
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+            }.navigationTitle("Szukaj")
+        }
     }
 }
-
 #Preview {
     SearchView()
 }

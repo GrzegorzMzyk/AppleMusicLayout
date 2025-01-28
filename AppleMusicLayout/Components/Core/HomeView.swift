@@ -9,9 +9,32 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("HomeView")
+        NavigationStack{
+            ScrollView {
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                
+            }
+            .background(Color.blue)
+            .navigationTitle("Ekran Główny")
+                .navigationBarTitleDisplayMode(.automatic)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            print("Dodaj kliknięty!")
+                        }) {
+                            Circle()
+                                .frame(width: 32, height: 32)
+                            
+                        }
+                    }
+                }
+        }
     }
 }
+
 
 #Preview {
     HomeView()

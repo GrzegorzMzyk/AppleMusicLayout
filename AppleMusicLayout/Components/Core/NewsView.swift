@@ -9,7 +9,14 @@ import SwiftUI
 
 struct NewsView: View {
     var body: some View {
-        Text("NewsView")
+        NavigationStack{
+            ScrollView {
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+            }.navigationTitle("Nowe")
+        }
     }
 }
 

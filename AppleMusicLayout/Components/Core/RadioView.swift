@@ -9,7 +9,14 @@ import SwiftUI
 
 struct RadioView: View {
     var body: some View {
-        Text("RadioView!")
+        NavigationStack{
+            ScrollView {
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+            }.navigationTitle("Radio")
+        }
     }
 }
 

@@ -9,10 +9,16 @@ import SwiftUI
 
 struct LibraryView: View {
     var body: some View {
-        Text("LibraryView")
+        NavigationStack{
+            ScrollView {
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+                Text("HomeView")
+            }.navigationTitle("Biblioteka")
+        }
     }
 }
-
 #Preview {
     LibraryView()
 }
