@@ -11,13 +11,14 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             ScrollView {
+             
+               
                 Text("HomeView")
                 Text("HomeView")
                 Text("HomeView")
                 Text("HomeView")
                 
             }
-            .background(Color.blue)
             .navigationTitle("Ekran Główny")
                 .navigationBarTitleDisplayMode(.automatic)
                 .toolbar {
