@@ -13,12 +13,16 @@ struct ImageLoaderView: View {
     var resizingMode: ContentMode = .fill
     
     var body: some View {
+        RoundedRectangle(cornerRadius: 30)
+            .opacity(0.001)
+            .overlay {
                 AsyncImage(url: URL(string: Constants.randomImage)) { image in
                     image.resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                 } placeholder: {
                     ProgressView()
                 }
+            }
 
             }
 
@@ -27,4 +31,7 @@ struct ImageLoaderView: View {
 
 #Preview {
     ImageLoaderView()
+        .clipShape(RoundedRectangle(cornerRadius: 30))
+        .padding(40)
+        .padding(.vertical, 60)
 }
