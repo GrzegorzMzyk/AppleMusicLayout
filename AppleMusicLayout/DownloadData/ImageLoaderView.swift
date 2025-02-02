@@ -16,13 +16,24 @@ struct ImageLoaderView: View {
         RoundedRectangle(cornerRadius: 30)
             .opacity(0.001)
             .overlay {
-                AsyncImage(url: URL(string: Constants.randomImage)) { image in
-                    image.resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ProgressView()
-                }
-            }
+                AsyncImage(url: URL(string: urlString)) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: resizingMode)
+                                    case .failure:
+                                        // Możesz zwrócić placeholder lub domyślny obraz
+                                        Image(systemName: "photo")
+                                            .resizable()
+                                            .scaledToFill()
+                                    @unknown default:
+                                        EmptyView()
+                                    }
+                                }
+                            }
 
             }
 

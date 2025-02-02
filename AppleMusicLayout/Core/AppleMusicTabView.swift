@@ -13,7 +13,7 @@ struct AppleMusicTabView: View {
 
     var body: some View {
         TabView(selection: $selectedTabIndex) {
-                HomeView()
+            HomeView(viewModel: AppleMusicViewModel())
                     .tabItem {
                         Label {
                             Text("Ekran Główny")
