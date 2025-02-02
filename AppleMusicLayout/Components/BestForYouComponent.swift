@@ -10,7 +10,7 @@ import SwiftUI
 struct BestForYouComponent: View {
     
     var imageName: String = Constants.randomImage
-    var title: String = "Best for you"
+    var title: String? = "Best for you"
     
     var body: some View {
         VStack(spacing: 8){
@@ -25,9 +25,11 @@ struct BestForYouComponent: View {
                                     .background(.regularMaterial)
                                     .frame(height: 80)
                                     .cornerRadius(10)
-                                        Text(title)
-                                            .font(.headline)
-                                            .foregroundColor(.white)
+                                if let title {
+                                    Text(title)
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                }
                                     
                             }
                         }
