@@ -13,7 +13,9 @@ struct BestForYouComponent: View {
     var title: String? = "Best for you"
     
     var body: some View {
+      
         VStack(spacing: 8){
+          
                 ImageLoaderView(urlString: imageName)
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .frame(width: 200, height: 300)

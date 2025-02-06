@@ -14,7 +14,10 @@ struct ImageLoaderView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 30)
+            
+            
             .opacity(0.001)
+            
             .overlay {
                 AsyncImage(url: URL(string: urlString)) { phase in
                                     switch phase {
@@ -22,13 +25,17 @@ struct ImageLoaderView: View {
                                         ProgressView()
                                     case .success(let image):
                                         image
+                                        
                                             .resizable()
                                             .aspectRatio(contentMode: resizingMode)
+                                            .background(.thinMaterial)
                                     case .failure:
                                         // Możesz zwrócić placeholder lub domyślny obraz
                                         Image(systemName: "photo")
                                             .resizable()
                                             .scaledToFill()
+                                        
+                                        
                                     @unknown default:
                                         EmptyView()
                                     }
@@ -42,7 +49,4 @@ struct ImageLoaderView: View {
 
 #Preview {
     ImageLoaderView()
-        .clipShape(RoundedRectangle(cornerRadius: 30))
-        .padding(40)
-        .padding(.vertical, 60)
 }
