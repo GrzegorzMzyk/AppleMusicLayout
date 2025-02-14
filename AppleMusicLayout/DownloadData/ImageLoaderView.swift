@@ -30,7 +30,6 @@ struct ImageLoaderView: View {
                                             .aspectRatio(contentMode: resizingMode)
                                             .background(.thinMaterial)
                                     case .failure:
-                                        // Możesz zwrócić placeholder lub domyślny obraz
                                         Image(systemName: "photo")
                                             .resizable()
                                             .scaledToFill()

@@ -9,24 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel =  AppleMusicViewModel()
-   
-    
+
     var body: some View {
         NavigationStack{
             ScrollView(.vertical) {
-                TitleContent()
                     
-                
+                    
+                             
                 ScrollView(.horizontal) {
-                    
                     LazyHStack{
                         ForEach(viewModel.products) { product in
+                            
                             BestForYouComponent(imageName: product.firstImage, title: product.title)
                         }
                     }
                 }
                
-                TitleContent()
+                TitleContent(bestForYouTitle:viewModel.products.first?.category.rawValue)
                 ScrollView(.horizontal) {
                     LazyHStack{
                         ForEach(viewModel.products) { product in
@@ -34,8 +33,60 @@ struct HomeView: View {
                         }
                     }
                 }
-              
                 
+                TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
+                        }
+                    }
+                }
+                
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            BestForYouComponent(imageName: product.firstImage, title: product.title)
+                        }
+                    }
+                }
+                
+                TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
+                        }
+                    }
+                }
+                TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
+                        }
+                    }
+                }
+
+                
+                TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
+                        }
+                    }
+                }
+                
+                ScrollView(.horizontal) {
+                    LazyHStack{
+                        ForEach(viewModel.products) { product in
+                            RecomendedPlaylistComponent(imageName: product.firstImage, thumbnail: product.thumbnail)
+                        }
+                    }
+                }
+
+
                 Text("TEST")
                 Text("TEST")
                 Text("TEST")
@@ -76,13 +127,17 @@ struct HomeView: View {
 }
 
 struct TitleContent: View {
-    var bestForYouTitle = "Najlepsze dla Ciebie"
+    
+    
+    var bestForYouTitle : String? = "best for you"
     var body: some View {
         HStack {
-            Text(bestForYouTitle)
-                .font(.title)
-                .fontWeight(.heavy)
-                .padding(10)
+            if let bestForYouTitle {
+                Text(bestForYouTitle)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .padding(10)
+            }
             Spacer()
         }
     }

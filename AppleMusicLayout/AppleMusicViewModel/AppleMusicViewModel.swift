@@ -13,7 +13,7 @@ import Combine
 class AppleMusicViewModel: Identifiable, ObservableObject {
     
     @Published var products: [Product] = []
-    @Published var productRows: [ProductRow] = []
+    @Published var category: [Category] = []
     
     init()  {
         Task {
@@ -21,21 +21,10 @@ class AppleMusicViewModel: Identifiable, ObservableObject {
         }
     }
 
-        
     func getData() async  {
         guard products.isEmpty else { return }
         do {
             products = try await Array(Downloader().getProducts().prefix(upTo: 20))
-          
-            
-            var rows: [ProductRow] = []
-                        let allBrands = Set(products.map({ $0._brand }))
-                        for brand in allBrands {
-                            rows.append(ProductRow(title: brand.capitalized, products: products))
-                        }
-            productRows = rows
-        
-            
         } catch {
             print("error of fetch users/products: \(error.localizedDescription)")
         }

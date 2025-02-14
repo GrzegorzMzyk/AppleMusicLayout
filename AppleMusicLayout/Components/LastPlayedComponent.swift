@@ -17,7 +17,7 @@ struct LastPlayedComponent: View {
         VStack(spacing: 8){
                 ImageLoaderView(urlString: imageName)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .frame(width: 200, height: 200)
+                    .frame(width: 150, height: 150)
             HStack{
                 if let brand {
                     Text(brand)

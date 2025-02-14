@@ -17,7 +17,7 @@ struct Product: Codable, Identifiable {
     let price, discountPercentage, rating: Double
     let stock: Int
     let brand: String?
-    let category: String
+    let category: Category
     let images: [String]
     let thumbnail: String
     
@@ -40,20 +40,25 @@ struct Product: Codable, Identifiable {
             rating: 6,
             stock: 8,
             brand: "Name Brand",
-            category: "Category name",
+            category: Category.beauty,
             images: [Constants.randomImage, Constants.randomImage, Constants.randomImage],
             thumbnail: Constants.randomImage
         )
     }
 }
-
-
-struct ProductRow: Identifiable {
-    
-    let id = UUID().uuidString
-    let title: String
-    let products: [Product]
+enum Category: String, Codable {
+    case beauty = "beauty"
+    case fragrances = "fragrances"
+    case furniture = "furniture"
+    case groceries = "groceries"
 }
+
+//struct ProductRow: Identifiable {
+//    
+//    let id = UUID().uuidString
+//    let title: String
+//    let products: [Product]
+//}
 
 
 
