@@ -81,21 +81,15 @@ struct HomeView: View {
     
 }
 
-func CustomHomeView<Content: View>(productsArray: [Product], viewComponent: @escaping (Product) -> Content ) -> some View {
-    
-    ScrollView(.horizontal) {
-        LazyHStack{
-            ForEach(productsArray) { product in
-                viewComponent(product)
-            }
-        }
-    }
-}
-    
+
 
 #Preview {
     HomeView(viewModel: AppleMusicViewModel())
 }
+
+
+
+
 
 struct TitleContent: View {
     
@@ -110,6 +104,17 @@ struct TitleContent: View {
                     .padding(10)
             }
             Spacer()
+        }
+    }
+}
+
+func CustomHomeView<Content: View>(productsArray: [Product], viewComponent: @escaping (Product) -> Content ) -> some View {
+    
+    ScrollView(.horizontal) {
+        LazyHStack{
+            ForEach(productsArray) { product in
+                viewComponent(product)
+            }
         }
     }
 }
