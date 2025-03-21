@@ -11,6 +11,11 @@ struct NewsView: View {
     var body: some View {
         NavigationStack{
             ScrollView {
+                
+                
+                
+                
+                
                 Text("HomeView")
                 Text("HomeView")
                 Text("HomeView")

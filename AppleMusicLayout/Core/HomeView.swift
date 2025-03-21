@@ -11,86 +11,55 @@ struct HomeView: View {
     @StateObject var viewModel =  AppleMusicViewModel()
 
     var body: some View {
+        
         NavigationStack{
             ScrollView(.vertical) {
-                    
-                    
-                             
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            
-                            BestForYouComponent(imageName: product.firstImage, title: product.title)
-                        }
-                    }
+
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    BestForYouComponent(imageName: product.firstImage, title: product.title)
                 }
-               
+                
                 TitleContent(bestForYouTitle:viewModel.products.first?.category.rawValue)
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
-                        }
-                    }
+                
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    BestForYouComponent(imageName: product.firstImage, title: product.title)
+                }
+                
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
+                }
+                
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
                 }
                 
                 TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
-                        }
-                    }
-                }
                 
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            BestForYouComponent(imageName: product.firstImage, title: product.title)
-                        }
-                    }
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    BestForYouComponent(imageName: product.firstImage, title: product.title)
                 }
                 
                 TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
-                        }
-                    }
+                
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
                 }
+                
                 TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
-                        }
-                    }
+                
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
                 }
 
-                
                 TitleContent(bestForYouTitle:viewModel.products.randomElement()?.brand)
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
-                        }
-                    }
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    LastPlayedComponent(imageName: product.firstImage, brand: product.brand)
                 }
                 
-                ScrollView(.horizontal) {
-                    LazyHStack{
-                        ForEach(viewModel.products) { product in
-                            RecomendedPlaylistComponent(imageName: product.firstImage, thumbnail: product.thumbnail)
-                        }
-                    }
+                CustomHomeView(productsArray: viewModel.products) { product in
+                    RecomendedPlaylistComponent(imageName: product.firstImage, thumbnail: product.thumbnail)
                 }
-
-
-                Text("TEST")
-                Text("TEST")
-                Text("TEST")
-                
+                                
             }
 
         
@@ -111,16 +80,18 @@ struct HomeView: View {
     }
     
 }
-    
-    
-    
-    
-    
 
+func CustomHomeView<Content: View>(productsArray: [Product], viewComponent: @escaping (Product) -> Content ) -> some View {
     
+    ScrollView(.horizontal) {
+        LazyHStack{
+            ForEach(productsArray) { product in
+                viewComponent(product)
+            }
+        }
+    }
+}
     
-
-
 
 #Preview {
     HomeView(viewModel: AppleMusicViewModel())
